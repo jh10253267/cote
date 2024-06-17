@@ -31,7 +31,7 @@ class Solution {
             }
         }
         for(int i : arr) {
-            System.out.println(i);
+        
             if(i > 0) {
                 answer ++;
             }
