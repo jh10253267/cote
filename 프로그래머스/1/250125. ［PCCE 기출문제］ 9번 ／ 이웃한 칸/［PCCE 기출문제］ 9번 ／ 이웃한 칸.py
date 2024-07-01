@@ -3,8 +3,8 @@
 # 탐색 순서는 오른쪽, 아래, 위, 왼쪽 
 def solution(board, h, w):
     answer = 0
-    dh = [0, 1, -1, 0]
-    dw = [1, 0, 0, -1]
+    dh = [1, -1, 0, 0]
+    dw = [0, 0, 1, -1]
     target = board[h][w]
     
     for i in range(len(dh)):
