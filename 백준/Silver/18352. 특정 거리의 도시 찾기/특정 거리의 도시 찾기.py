@@ -2,35 +2,36 @@ import sys
 from collections import deque
 input = sys.stdin.readline
 
+# 노드, 에지, 타겟 거리, 시작 노드
 N, M, K, X = map(int, input().split())
-A = [[] for _ in range(N + 1)]
+A = [[] for _ in range(N+1)]
 answer = []
 visited = [-1] * (N + 1)
 
 def BFS(v):
-    queue = deque()
-    queue.append(v)
-    visited[v] += 1
-    while queue:
-        now_Node = queue.popleft()
-        for i in A[now_Node]:
-            if visited[i] == -1:
-                visited[i] = visited[now_Node] + 1
-                queue.append(i)
+  queue = deque()
+  queue.append(v)
+  visited[v] += 1
+  while queue:
+    now_node = queue.popleft()
+    for i in A[now_node]:
+      if visited[i] == -1:
+        visited[i] = visited[now_node] + 1
+        queue.append(i)
 
 for _ in range(M):
-    S, E = map(int, input().split())
-    A[S].append(E)
+  S, E = map(int, input().split())
+  A[S].append(E)
 
 BFS(X)
 
 for i in range(N + 1):
-    if visited[i] == K:
-        answer.append(i)
+  if visited[i] == K:
+    answer.append(i)
 
 if not answer:
-    print(-1)
+  print(-1)
 else:
-    answer.sort()
-    for i in answer:
-        print(i)
+  answer.sort()
+  for i in answer:
+    print(i)
