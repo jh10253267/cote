@@ -15,7 +15,7 @@ def solution(friends, gifts):
     for i in range(n):
         g_score[i] = sum(g_arr[i]) - t_arr[i]
     
-    max_gift = [0] * n
+    gift_count = [0] * n
     
     for i in range(n):
         for j in range(n):
@@ -24,16 +24,14 @@ def solution(friends, gifts):
                 
             g_cout = g_arr[i][j]
             t_cout = g_arr[j][i]
-            
+            # 서로 주고받았지만 동수가 아닌 경우
             if g_cout > t_cout:
-                max_gift[i] += 1
+                gift_count[i] += 1
             # 서로 주고받았지만 동수인 경우
-            elif (g_cout > 0 and t_cout > 0) and (g_cout==t_cout):
-                if g_score[j] < g_score[i]:
-                    max_gift[i] += 1
-            # 서로 주고받은 적이 없다.
-            elif (g_cout == 0 and t_cout == 0) and (g_score[j] < g_score[i]):
-                max_gift[i] += 1
-            
-                
-    return max(max_gift)
+            elif g_cout==t_cout and g_score[j] < g_score[i]:
+                if g_cout > 0:
+                    gift_count[i] += 1
+                elif g_cout == 0:
+                    gift_count[i] += 1
+                    
+    return max(gift_count)
