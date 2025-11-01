@@ -15,7 +15,7 @@ class Solution {
             if(challenger[i] == 0) {
                 fails.put(i, 0.);
             } else {
-                fails.put(i, challenger[i] / total);
+                fails.put(i, (double) challenger[i] / total);
                 total -= challenger[i];
             }
         }
